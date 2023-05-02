@@ -10,13 +10,13 @@
 
 class AVL {
 private:
-    Node * root;
+     Node * root;
 public:
     AVL(){
         root = nullptr;
     }
 
-    void insert(const Student& student);
+     Node* insert(Node* node, const Student& info );
 
     void remove(const Student& student);
 
@@ -24,6 +24,13 @@ public:
 
     void print();
 
+    Node *getRoot() const;
+
+    void setRoot(Node *root);
+
+    int getBFactor(Node* node);
+
+    int height(Node *N);
 };
 
 
