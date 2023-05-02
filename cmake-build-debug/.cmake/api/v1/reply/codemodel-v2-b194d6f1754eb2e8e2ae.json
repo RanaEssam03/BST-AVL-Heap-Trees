@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.25"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "BST_AVL_Heap_Trees",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "BST_AVL_Heap_Trees::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-BST_AVL_Heap_Trees-Debug-e2234467cdb82131b814.json",
+					"name" : "BST_AVL_Heap_Trees",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/FCAI/Level2 second term/data_structure/assignments/A3/BST-AVL-Heap-Trees/cmake-build-debug",
+		"source" : "D:/FCAI/Level2 second term/data_structure/assignments/A3/BST-AVL-Heap-Trees"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}
