@@ -21,6 +21,7 @@ struct Student {
     }
     Student()= default;
 
+
     friend bool operator > (const Student& s1, const Student& s2)
     {
         return s1.gpa > s2.gpa;
@@ -45,6 +46,7 @@ struct Student {
     {
         return s1.gpa > s2.gpa;
     }
+
 
 };
 
