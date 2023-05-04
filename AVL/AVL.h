@@ -16,13 +16,12 @@ public:
         root = nullptr;
     }
 
-     Node* insert(Node* node, const Student& info );
+     Node* insert(Node* &node,  Student info );
 
     void remove(const Student& student);
 
-    void search(const Student& student);
+    Student* search(const Student& student);
 
-    void print();
 
     Node *getRoot() const;
 
@@ -30,7 +29,19 @@ public:
 
     int getBFactor(Node* node);
 
-    int height(Node *N);
+    static int height(Node *N);
+
+    static Node* rotateLeft(Node *& node);
+
+    static Node* rotateRight(Node * &node);
+
+
+    void print(Node *node);
+
+
+    Node* search(int id, Node *root);
+
+    void remove(const Student &student, Node *node);
 };
 
 

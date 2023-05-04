@@ -18,7 +18,7 @@ struct Node {
         leftChild = nullptr;
         rightChild = nullptr;
         parent = nullptr;
-        height = 0;
+        height = 1;
     }
 };
 
