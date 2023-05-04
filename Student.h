@@ -39,12 +39,12 @@ struct Student {
 
     friend bool operator <= (const Student& s1, const Student& s2)
     {
-        return s1.gpa > s2.gpa;
+        return s1.gpa >= s2.gpa;
     }
 
     friend bool operator == (const Student& s1, const Student& s2)
     {
-        return s1.gpa > s2.gpa;
+        return s1.gpa == s2.gpa;
     }
 
 
