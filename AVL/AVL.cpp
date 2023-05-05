@@ -145,9 +145,9 @@ void AVL::remove(const Student& student, Node* node) {
 
 void AVL::print(Node* node) {
     if(node != nullptr){
-        std::cout << node->info.id << " ";
 
         print(node->leftChild);
+        std::cout << node->info.id << " ";
 
         print(node->rightChild);
     }
@@ -216,7 +216,7 @@ void AVL::remove(int id) {
         if(student->leftChild ){
             if(parent != nullptr)
             {
-                if (student > parent)
+                if (student->info.id > parent->info.id)
                     parent->rightChild = student->leftChild;
                 else
                     parent->leftChild = student->leftChild;
@@ -230,12 +230,15 @@ void AVL::remove(int id) {
         }
         else{
             if(parent ) {
-
+                if (student->info.id > parent->info.id)
                     parent->rightChild = student->rightChild;
+                else
+                    parent->leftChild = student->rightChild;
 
             }
             else{
                 root = student->rightChild;
+
             }
             student->rightChild->parent = parent;
             free(student);

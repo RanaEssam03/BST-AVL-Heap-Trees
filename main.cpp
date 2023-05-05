@@ -13,13 +13,13 @@ int main(){
     t.insert(root, nullptr,  Student("Rana", 22, 40, "cs"));
     t.insert(root, nullptr,  Student("Rana", 22, 20, "cs"));
     t.insert(root, nullptr,  Student("Rana", 22, 10, "cs"));
-    t.insert(root, nullptr,  Student("Rana", 22, 5, "cs"));
     t.print(t.getRoot());
     cout << endl;
-    t.insert(root, nullptr,  Student("Rana", 22, 3, "cs"));
+    t.insert(root, nullptr,  Student("Rana", 22, 5, "cs"));
+    t.insert(root, nullptr,  Student("Rana", 22, 7, "cs"));
 
     t.print(t.getRoot());
-    t.remove(35);
+    t.remove(10);
     cout << endl;
     t.print(t.getRoot());
 
