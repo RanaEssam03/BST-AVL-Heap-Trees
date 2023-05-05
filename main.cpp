@@ -10,23 +10,19 @@ using namespace std;
 int main(){
     AVL t;
     Node * root = t.getRoot();
+    t.insert(root, nullptr,  Student("Rana", 22, 40, "cs"));
+    t.insert(root, nullptr,  Student("Rana", 22, 20, "cs"));
     t.insert(root, nullptr,  Student("Rana", 22, 10, "cs"));
-    t.insert(root, nullptr, Student("Rana", 22, 20, "cs"));
-    t.insert(root, nullptr,  Student("Rana", 22, 30, "cs"));
-
-    t.insert(root, nullptr, Student("Rana", 22, 40, "cs"));
-
-    t.insert(root, nullptr,Student("Rana", 22, 50, "cs"));
-
-
-    t.insert(root, nullptr,Student("Rana", 22, 25, "cs"));
-    t.insert(root, nullptr,Student("Rana", 22, 5, "cs"));
-
-    t.remove(10);
+    t.insert(root, nullptr,  Student("Rana", 22, 5, "cs"));
+    t.print(t.getRoot());
     cout << endl;
-    cout << t.getRoot()->info.gpa;
+    t.insert(root, nullptr,  Student("Rana", 22, 3, "cs"));
+
+    t.print(t.getRoot());
+    t.remove(35);
     cout << endl;
     t.print(t.getRoot());
+
 }
 
 

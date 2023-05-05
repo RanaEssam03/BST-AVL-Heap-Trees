@@ -48,22 +48,22 @@ Node* AVL::insert(Node* & node, Node* parent ,  Student info ) {
         node = rotateLeft(node);
 
     }
-    if(bF > 1 && node->leftChild->info > info){
+    else if(bF > 1 && node->leftChild->info >= info){
 
         node = rotateRight(node);
 
     }
-    if(bF < -1 && node->rightChild->info > info){
+    else if(bF < -1 && node->rightChild->info >= info){
 
 
         node->rightChild =   rotateRight(node->rightChild);
-        node=  rotateLeft(node);
+        return   rotateLeft(node);
 
     }
-    if(bF >1 && node->leftChild->info < info){
+    else if(bF >1 && node->leftChild->info < info){
 
-        node =rotateRight(node->leftChild);
-        node= rotateLeft(node);
+        node ->leftChild =rotateLeft(node->leftChild);
+        return  rotateRight(node);
 
     }
     return node;
@@ -73,6 +73,9 @@ Node* AVL::insert(Node* & node, Node* parent ,  Student info ) {
 
 Node* AVL::rotateLeft(Node *&node) {
     Node * right = node->rightChild;
+    if(right == nullptr){
+        return right;
+    }
     Node * leftOfR= right->leftChild;
 
     right->leftChild = node;
@@ -100,7 +103,9 @@ Node* AVL::rotateLeft(Node *&node) {
 Node* AVL::rotateRight(Node * & node) {
     Node * left = node->leftChild;
     Node * rightOfL;
-
+    if(left == nullptr){
+        return nullptr ;
+    }
     rightOfL= left->rightChild;
 
     left->rightChild = node;
@@ -140,8 +145,10 @@ void AVL::remove(const Student& student, Node* node) {
 
 void AVL::print(Node* node) {
     if(node != nullptr){
-        std::cout << node->info.gpa << " ";
+        std::cout << node->info.id << " ";
+
         print(node->leftChild);
+
         print(node->rightChild);
     }
 }
@@ -170,7 +177,7 @@ void AVL::remove(int id) {
     Node* tmp;
     cout << "Student found";
     if((!student->leftChild && !student->rightChild)){
-            if(student > parent){
+            if(student->info > parent->info){
                 parent->rightChild = nullptr;
             }
             else{
@@ -184,15 +191,21 @@ void AVL::remove(int id) {
         Node* min = getMinNode(student->rightChild); // to get inorderSuccessor
 //        if(min!= nullptr && min->parent != nullptr)
 //            min->parent->leftChild= nullptr;
-
-        cout << "here= " << min->info.gpa << endl;
         tmp = min->parent;
 
+        if(min == student->rightChild){
+            student->rightChild = min->rightChild;
+        }
+     else
+        {
+            tmp->leftChild = min->rightChild;
+        }
 
         student->info = min->info;
-        parent = min->parent;
+
+
         if(min->rightChild){
-            min->parent->rightChild = min->rightChild;
+            min->rightChild->parent = tmp;
         }
         ::free(min);
 
@@ -200,21 +213,30 @@ void AVL::remove(int id) {
     else{
         tmp = student->parent;
 
-        if(student->leftChild){
-            if(student> parent)
-                parent->rightChild = student->leftChild;
-            else
-                parent->leftChild = student->leftChild;
+        if(student->leftChild ){
+            if(parent != nullptr)
+            {
+                if (student > parent)
+                    parent->rightChild = student->leftChild;
+                else
+                    parent->leftChild = student->leftChild;
+            }
+            else{
+                this->root = student->leftChild;
+            }
 
             student->leftChild->parent = parent;
             free(student);
         }
         else{
-            if(student > parent)
-                parent->rightChild = student->rightChild;
-            else
-                parent->leftChild = student->rightChild;
+            if(parent ) {
 
+                    parent->rightChild = student->rightChild;
+
+            }
+            else{
+                root = student->rightChild;
+            }
             student->rightChild->parent = parent;
             free(student);
         }
@@ -249,10 +271,10 @@ bool  AVL::update(Node* & node){
 }
 
 Node* AVL::search(int id, Node* node) {
-   if(node == nullptr || id == node->info.gpa){
+   if(node == nullptr || id == node->info.id){
        return node;
    }
-   if(id < node->info.gpa){
+   if(id < node->info.id){
        return search(id, node->leftChild);
    }
    else{
