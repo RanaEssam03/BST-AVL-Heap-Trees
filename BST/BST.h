@@ -12,10 +12,11 @@ private:
     node* root;
 public:
     void addStudent(Student& student);
-    void removeStudent(int ID);
-    void search(int ID);
+    node* removeStudent(int ID, node* pointer);
+    node* search(int ID, node* pointer);
     void print(node* node);
     node* getRoot();
+    node* minValueNode(node* pointer);
 };
 
 
