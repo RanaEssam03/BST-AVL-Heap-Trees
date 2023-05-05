@@ -46,8 +46,10 @@ struct Student {
     {
         return s1.gpa > s2.gpa;
     }
-
-
+    friend ostream& operator<< (ostream& os, const Student& s){
+        os << '[' << s.id << ',' << s.name << ',' << s.gpa << ',' << s.dep << ']' << '\n';
+        return os;
+    }
 };
 
 ostream& operator<<(ostream& os, const Student& s)
