@@ -29,11 +29,11 @@ public:
 
     int getBFactor(Node* node);
 
-    static int height(Node *N);
+     int height(Node *N);
 
-    static Node* rotateLeft(Node *& node);
+     Node* rotateLeft(Node *& node);
 
-    static Node* rotateRight(Node * &node);
+     Node* rotateRight(Node * &node);
 
 
     void print(Node *node);
@@ -42,6 +42,14 @@ public:
     Node* search(int id, Node *root);
 
     void remove(const Student &student, Node *node);
+
+    Node *insert(Node *&node, Node *parent, Student info);
+
+    Node *getMinNode(Node *node);
+
+    void remove(int id);
+
+    bool update(Node *&node);
 };
 
 

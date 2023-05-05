@@ -1,0 +1,3 @@
+D:/FCAI/Level2 second term/data_structure/assignments/BST-AVL-Heap-Trees/cmake-build-debug/CMakeFiles/BST_AVL_Heap_Trees.dir
+D:/FCAI/Level2 second term/data_structure/assignments/BST-AVL-Heap-Trees/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/FCAI/Level2 second term/data_structure/assignments/BST-AVL-Heap-Trees/cmake-build-debug/CMakeFiles/rebuild_cache.dir
