@@ -15,7 +15,6 @@ struct node{
     node(){
         left = nullptr;
         right = nullptr;
-        parent = nullptr;
     }
     node(Student student){
         left = nullptr;
