@@ -14,14 +14,14 @@ void BST::addStudent(Student& student) {
     node* pointer = nullptr;
     while (current != nullptr){
         pointer = current;
-        if (newNode->info.gpa < current->info.gpa){
+        if (newNode->info.id < current->info.id){
             current = current->left;
         }
         else{
             current = current->right;
         }
     }
-    if (newNode->info.gpa < pointer->info.gpa){
+    if (newNode->info.id < pointer->info.id){
         pointer->left = newNode;
         newNode->parent = pointer;
     }
@@ -53,25 +53,28 @@ node* BST::removeStudent(int ID, node* pointer) {
     else{
         if (pointer->left == nullptr && pointer->right == nullptr){
             node* temp = pointer->right;
+            if(root == pointer) root = nullptr;
             free(pointer);
             cout << "Student removed\n";
             return temp;
         }
         else if (pointer->left == nullptr){
             node* temp = pointer->right;
+            if(root == pointer) root = temp;
             free(pointer);
             cout << "Student removed\n";
             return temp;
         }
         else if (pointer->right == nullptr){
             node* temp = pointer->left;
+            if(root == pointer) root = temp;
             free(pointer);
             cout << "Student removed\n";
             return temp;
         }
         node* temp = minValueNode(pointer->right);
         pointer->info = temp->info;
-        pointer->right = removeStudent(temp->info.id, pointer->right);
+        pointer->right = removeStudent(temp->info.id, pointer->right);  
     }
     return pointer;
 }
@@ -144,14 +147,14 @@ int main(){
     v.removeStudent(2, v.getRoot());
     v.removeStudent(1, v.getRoot());
     v.print(v.getRoot());
-//    cout << endl;
-//    Student s9("noor", 2, 3.2, "CS");
-//    v.addStudent(s9);
-//    v.print(v.getRoot());
-//    cout << endl;
-//    Student s10("noor", 1, 3.2, "CS");
-//    v.addStudent(s10);
-//    v.print(v.getRoot());
-//    cout << endl;
+    cout << endl;
+    Student s9("noor", 2, 3.2, "CS");
+    v.addStudent(s9);
+    v.print(v.getRoot());
+    cout << endl;
+    Student s10("noor", 1, 3.2, "CS");
+    v.addStudent(s10);
+    v.print(v.getRoot());
+    cout << endl;
 }
 
