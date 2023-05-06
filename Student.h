@@ -52,5 +52,11 @@ struct Student {
     }
 };
 
+ostream& operator<<(ostream& os, const Student& s)
+{
+    os << '[' << s.id << ',' << s.name << ',' << s.gpa << ',' << s.dep << ']';
+    return os;
+}
+
 
 #endif //BST_AVL_HEAP_TREES_STUDENT_H
