@@ -4,15 +4,11 @@
 
 #include "AVL.h"
 
-Node *AVL::getRoot() const {
-    return root;
-}
+Node* getMinNode(Node* node);
+int getBFactor(Node *node);
 
-void AVL::setRoot(Node *r) {
-    this->root = r;
-}
 
-int AVL::height(struct Node *N)
+int height(struct Node *N)
 {
     if (N == nullptr)
         return 0;
@@ -21,19 +17,104 @@ int AVL::height(struct Node *N)
 
 
 
-Node* AVL::insert(Node* & node, Node* parent ,  Student info ) {
+Node* rotateLeft(Node *&y) {
+    Node * x = y->rightChild;
+
+    Node * tmp= x->leftChild;
+
+    x->leftChild = y;
+    y->rightChild = tmp;
+
+    x->height = max(height(x->leftChild), height(x->rightChild))+1;
+    y->height = max(height(y->leftChild), height(y->rightChild))+1;
+
+    return x;
+}
+
+
+
+// left = y    t3 = rightOfL z = node
+Node* rotateRight(Node * & y) {
+    Node* x = y->leftChild;
+    Node* tmp = x->rightChild;
+
+    x->rightChild = y;
+    y->leftChild = tmp;
+
+    x->height = max(height(x->leftChild), height(x->rightChild))+1;
+    y->height = max(height(y->leftChild), height(y->rightChild))+1;
+
+    return x;
+}
+
+
+Node* remove(int id, Node* root){
+    if(root == nullptr){
+        return nullptr;
+    }
+    if(id < root->info.id){
+        root->leftChild=remove(id, root->leftChild);
+    }
+    else if (id > root->info.id){
+        root->rightChild= remove(id, root->rightChild);
+    }
+    else{
+        if(!root->leftChild || !root->rightChild){
+            Node *tmp = root->leftChild ? root->leftChild : root->rightChild;
+            if(tmp == nullptr){
+                tmp= root;
+                root= nullptr;
+            }
+            else{
+                *root = *tmp;
+            }
+            free(tmp);
+        }
+        else{
+            Node* min = getMinNode(root->rightChild);
+            root->info= min->info;
+            root->rightChild = remove(min->info.id, root->rightChild);
+        }
+
+
+    }
+    if(root== nullptr){
+        return root;
+    }
+
+    root->height = 1 + max(height(root->leftChild), height(root->rightChild));
+
+    int bf = getBFactor(root);
+
+    if(bf> 1 ){
+        if(getBFactor(root->leftChild) >=0 )
+            return rotateRight(root);
+        else{
+            root->leftChild = rotateLeft(root->leftChild);
+            return rotateRight(root);
+        }
+    }
+    else if (bf< -1 ){
+        if(getBFactor(root->rightChild) <=0 )
+            return rotateLeft(root);
+        else{
+            root->rightChild = rotateRight(root->rightChild);
+            return rotateLeft(root);
+        }
+    }
+
+
+    return root;
+}
+
+Node* insert(Node*  node, Node* parent ,  Student info ) {
 
     if(node == nullptr){
-        Node*  newNode = new Node();
+        Node* newNode = new Node();
         newNode->info = info;
-        node = newNode;
-        node->parent = parent;
-        if(parent == nullptr){
-            this->root = node;
-        }
         return  newNode;
     }
-    if(node->info < info){
+    if(node->info.id < info.id){
         node->rightChild = insert(node->rightChild, node, info);
     }
     else{
@@ -44,23 +125,21 @@ Node* AVL::insert(Node* & node, Node* parent ,  Student info ) {
 
     int bF = getBFactor(node);
 
-    if(bF <-1 && node->rightChild->info <info){
+    if(bF <-1 && node->rightChild->info.id <info.id){
         node = rotateLeft(node);
 
     }
-    else if(bF > 1 && node->leftChild->info >= info){
+    else if(bF > 1 && node->leftChild->info.id >= info.id){
 
         node = rotateRight(node);
 
     }
-    else if(bF < -1 && node->rightChild->info >= info){
-
-
+    else if(bF < -1 && node->rightChild->info.id >= info.id){
         node->rightChild =   rotateRight(node->rightChild);
         return   rotateLeft(node);
 
     }
-    else if(bF >1 && node->leftChild->info < info){
+    else if(bF >1 && node->leftChild->info.id < info.id){
 
         node ->leftChild =rotateLeft(node->leftChild);
         return  rotateRight(node);
@@ -68,84 +147,12 @@ Node* AVL::insert(Node* & node, Node* parent ,  Student info ) {
     }
     return node;
 
-
-}
-
-Node* AVL::rotateLeft(Node *&node) {
-    Node * right = node->rightChild;
-    if(right == nullptr){
-        return right;
-    }
-    Node * leftOfR= right->leftChild;
-
-    right->leftChild = node;
-    right->parent = node->parent;
-    node->rightChild = leftOfR;
-    if(node->parent == nullptr){
-        this->root = right;
-    }
-    node->parent = right;
-    if(leftOfR != nullptr){
-        leftOfR->parent = node;
-    }
-
-    node->height = max(height(node->leftChild),
-                       height(node->rightChild)) + 1;
-
-    right->height = max(height(right->leftChild),
-                       height(right->rightChild)) + 1;
-    return right;
-
 }
 
 
 
-Node* AVL::rotateRight(Node * & node) {
-    Node * left = node->leftChild;
-    Node * rightOfL;
-    if(left == nullptr){
-        return nullptr ;
-    }
-    rightOfL= left->rightChild;
-
-    left->rightChild = node;
-    node->leftChild = rightOfL;
-
-    left->parent = node->parent;
-
-    if(node->parent == nullptr){
-        cout << "heree root";
-        this->root = left;
-    }
-    node->parent = left;
-    if(rightOfL!= nullptr){
-        rightOfL->parent = node;
-    }
-
-    node->height = max(height(node->leftChild),
-                    height(node->rightChild)) + 1;
-
-    left->height = max(height(left->leftChild),
-                    height(left->rightChild)) + 1;
-
-    return left;
-}
-
-//Node* getMinNode(Node* node){
-//
-//
-//}
-
-
-void AVL::remove(const Student& student, Node* node) {
-
-}
-
-
-
-void AVL::print(Node* node) {
+void print(Node* node) {
     if(node != nullptr){
-
         print(node->leftChild);
         std::cout << node->info.id << " ";
 
@@ -153,13 +160,16 @@ void AVL::print(Node* node) {
     }
 }
 
-int AVL::getBFactor(Node *node) {
+int getBFactor(Node *node) {
 
     return height(node->leftChild)- height(node->rightChild);
 }
 
 
-Node* AVL::getMinNode(Node* node){
+Node* getMinNode(Node* node){
+    if(node== nullptr){
+        return nullptr;
+    }
     if (node->leftChild == nullptr){
         return node;
     }
@@ -167,99 +177,7 @@ Node* AVL::getMinNode(Node* node){
 }
 
 
-void AVL::remove(int id) {
-    Node * student = search(id, getRoot());
-    if(student == NULL){
-        cout << "student not found\n";
-        return;
-    }
-    Node* parent = student->parent;
-    Node* tmp;
-    cout << "Student found";
-    if((!student->leftChild && !student->rightChild)){
-            if(student->info > parent->info){
-                parent->rightChild = nullptr;
-            }
-            else{
-                parent->leftChild = nullptr;
-            }
-            free(student);
-            tmp= parent;
-    }
-    else if((student->leftChild && student->rightChild)){
-
-        Node* min = getMinNode(student->rightChild); // to get inorderSuccessor
-//        if(min!= nullptr && min->parent != nullptr)
-//            min->parent->leftChild= nullptr;
-        tmp = min->parent;
-
-        if(min == student->rightChild){
-            student->rightChild = min->rightChild;
-        }
-     else
-        {
-            tmp->leftChild = min->rightChild;
-        }
-
-        student->info = min->info;
-
-
-        if(min->rightChild){
-            min->rightChild->parent = tmp;
-        }
-        ::free(min);
-
-    }
-    else{
-        tmp = student->parent;
-
-        if(student->leftChild ){
-            if(parent != nullptr)
-            {
-                if (student->info.id > parent->info.id)
-                    parent->rightChild = student->leftChild;
-                else
-                    parent->leftChild = student->leftChild;
-            }
-            else{
-                this->root = student->leftChild;
-            }
-
-            student->leftChild->parent = parent;
-            free(student);
-        }
-        else{
-            if(parent ) {
-                if (student->info.id > parent->info.id)
-                    parent->rightChild = student->rightChild;
-                else
-                    parent->leftChild = student->rightChild;
-
-            }
-            else{
-                root = student->rightChild;
-
-            }
-            student->rightChild->parent = parent;
-            free(student);
-        }
-    }
-    Node* current = tmp;
-    while(current!= nullptr){
-        current->height = max(height(current->rightChild), height(current->leftChild))+1;
-        current= current->parent;
-    }
-    while(tmp != nullptr){
-       if( update(tmp)){
-           break;
-       }
-        tmp = tmp->parent;
-
-    }
-
-}
-
-bool  AVL::update(Node* & node){
+bool  update(Node* & node){
     int bF = getBFactor(node);
     if(bF >1){
         rotateRight(node);
@@ -273,7 +191,7 @@ bool  AVL::update(Node* & node){
 
 }
 
-Node* AVL::search(int id, Node* node) {
+Node* search(int id, Node* node) {
    if(node == nullptr || id == node->info.id){
        return node;
    }
@@ -283,6 +201,30 @@ Node* AVL::search(int id, Node* node) {
    else{
        return search(id, node->rightChild);
    }
+}
 
 
+int main(){
+
+    Node * root= nullptr;
+root=    insert(root, nullptr,  Student("Rana", 22, 40, "cs"));
+
+   root=  insert(root, nullptr,  Student("Rana", 22, 20, "cs"));
+
+    root=insert(root, nullptr,  Student("Rana", 22, 6, "cs"));
+
+    root=insert(root, nullptr,  Student("Rana", 22, 2, "cs"));
+
+
+    root= insert(root, nullptr,  Student("Rana", 22, 5, "cs"));
+
+
+    root=insert(root, nullptr,  Student("Rana", 22, 3, "cs"));
+
+    root= insert(root, nullptr,  Student("Rana", 22, 8, "cs"));
+    root= insert(root, nullptr,  Student("Rana", 22, 1, "cs"));
+    root= insert(root, nullptr,  Student("Rana", 22, 99, "cs"));
+
+    root= remove(20, root);
+    print(root);
 }
