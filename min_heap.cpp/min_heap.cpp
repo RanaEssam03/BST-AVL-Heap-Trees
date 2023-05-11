@@ -7,60 +7,60 @@
 using namespace std;
 
 template<class T>
-class max_heap
+class min_heap
 {
 private:
     vector<T> arr;
 public:
-    max_heap(vector<T> arr);
-    void max_heapify(int index);
-    void build_max_heap();
+    min_heap(vector<T> arr);
+    void min_heapify(int index);
+    void build_min_heap();
     void insert(T element);
-    T max();
-    T extract_max();
+    T min();
+    T extract_min();
     vector<T> heapSort();
     void print(int index);
 };
 
 template<class T>
-max_heap<T>::max_heap(vector<T> arr)
+min_heap<T>::min_heap(vector<T> arr)
 {
     this->arr = arr;
-    build_max_heap();
+    build_min_heap();
 }
 
 template<class T>
-void max_heap<T>::max_heapify(int index)
+void min_heap<T>::min_heapify(int index)
 {
     int l = 2*index;
     int r = 2*index + 1;
-    int largest = index;
-    if(l < arr.size() && arr[largest] < arr[l])
-        largest = l;
+    int smallest = index;
+    if(l < arr.size() && arr[smallest] > arr[l])
+        smallest = l;
 
-    if(r < arr.size() && arr[largest] < arr[r])
-        largest = r;
+    if(r < arr.size() && arr[smallest] > arr[r])
+        smallest = r;
     
-    if(largest != index){
-        swap(arr[largest], arr[index]);
-        max_heapify(largest);
+    if(smallest != index){
+        swap(arr[smallest], arr[index]);
+        min_heapify(smallest);
     }
 }
 
 template<class T>
-void max_heap<T>::build_max_heap()
+void min_heap<T>::build_min_heap()
 {
     for(int i = arr.size()/2; i >= 0; i--){
-        max_heapify(i);
+        min_heapify(i);
     }
 }
 
 template<class T>
-void max_heap<T>::insert(T element)
+void min_heap<T>::insert(T element)
 {
     int index = arr.size();
     arr.push_back(element);
-    while (index > 0 && arr[((index+1)/2)-1] < arr[index])
+    while (index > 0 && arr[((index+1)/2)-1] > arr[index])
     {
         swap(arr[index], arr[((index+1)/2)-1]);
         index = ((index+1)/2)-1;
@@ -68,10 +68,10 @@ void max_heap<T>::insert(T element)
 }
 
 template<class T>
-T max_heap<T>::max(){
+T min_heap<T>::min(){
     try{
-        T max = arr[0];
-        return max;
+        T min = arr[0];
+        return min;
     }
     catch(...){
         cout << "heap underflow";
@@ -80,13 +80,13 @@ T max_heap<T>::max(){
 }
 
 template<class T>
-T max_heap<T>::extract_max(){
+T min_heap<T>::extract_min(){
     try{
-        T max = arr[0];
+        T min = arr[0];
         swap(arr[0], arr[arr.size()-1]);
         arr.pop_back();
-        max_heapify(0);
-        return max;
+        min_heapify(0);
+        return min;
     }
     catch(...){
         cout << "heap underflow";
@@ -95,20 +95,19 @@ T max_heap<T>::extract_max(){
 }
 
 template<class T>
-vector<T> max_heap<T>::heapSort(){
+vector<T> min_heap<T>::heapSort(){
     vector<T> tmp = arr;
     vector<T> sorted;
     while(!arr.empty()){
-        T max = this->extract_max();
-        sorted.push_back(max);
+        T min = this->extract_min();
+        sorted.push_back(min);
     }
-    reverse(sorted.begin(), sorted.end());
     arr = tmp;
     return sorted;
 }
 
 template<class T>
-void max_heap<T>::print(int index){
+void min_heap<T>::print(int index){
     cout << arr[index-1] << ' ';
 
     if((index*2)-1 < arr.size())
@@ -129,7 +128,7 @@ void max_heap<T>::print(int index){
 
 int main(){
     vector<Student> students = loadfile();
-    max_heap<Student> heap(students);
+    min_heap<Student> heap(students);
     while (true)
     {
         cout << "Choose one of the following options:" << endl;
