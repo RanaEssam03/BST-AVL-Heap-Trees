@@ -8,7 +8,7 @@ using namespace std;
 
 vector<Student> loadfile(){
     vector<Student> students;
-    ifstream fs("../input.txt");
+    ifstream fs("input.txt");
     int n;
     fs >> n;
     for(int i = 0; i < n; i++){

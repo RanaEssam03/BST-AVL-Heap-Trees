@@ -11,13 +11,11 @@
 struct Node {
     Node * leftChild;
     Node * rightChild;
-    Node * parent;
     int height;
     Student info;
     Node(){
         leftChild = nullptr;
         rightChild = nullptr;
-        parent = nullptr;
         height = 1;
     }
 };

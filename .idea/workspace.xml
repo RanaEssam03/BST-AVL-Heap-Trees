@@ -3,6 +3,12 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="CMakePresetLoader"><![CDATA[{
+  "useNewFormat": true
+}]]></component>
+  <component name="CMakeRunConfigurationManager">
+    <generated />
+  </component>
   <component name="CMakeSettings">
     <configurations>
       <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
@@ -10,13 +16,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5962005f-303e-4681-88b8-45a28670857e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/BST-AVL-Heap-Trees.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BST/BST.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BST/BST.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BST/node.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Student.h" beforeDir="false" afterPath="$PROJECT_DIR$/Student.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/BST-AVL-Heap-Trees.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BST-AVL-Heap-Trees.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AVL/AVL.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/AVL/AVL.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AVL/AVL.h" beforeDir="false" afterPath="$PROJECT_DIR$/AVL/AVL.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AVL/Node.h" beforeDir="false" afterPath="$PROJECT_DIR$/AVL/Node.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loadfile.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/loadfile.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.exe" beforeDir="false" afterPath="$PROJECT_DIR$/main.exe" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +33,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -52,7 +60,7 @@
     "WebServerToolWindowFactoryState": "false",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "BST",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Users/Admin/Documents/GitHub/BST-AVL-Heap-Trees/BST/BST.cpp",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -61,13 +69,28 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="C/C++ File.main.cpp">
     <configuration name="BST.cpp" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BST_AVL_Heap_Trees" TARGET_NAME="BST.cpp" CONFIG_NAME="BST.cpp">
       <option name="sourceFile" value="C:\Users\Admin\Documents\GitHub\BST-AVL-Heap-Trees\BST\BST.cpp" />
       <method v="2">
         <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="main.cpp" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="BST-AVL-Heap-Trees" TARGET_NAME="main.cpp" CONFIG_NAME="main.cpp">
+      <option name="sourceFile" value="main.cpp" />
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="C/C++ File.BST.cpp" />
+      <item itemvalue="C/C++ File.main.cpp" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="C/C++ File.main.cpp" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -78,6 +101,7 @@
       <option name="presentableId" value="Default" />
       <updated>1683147585371</updated>
       <workItem from="1683147586461" duration="6808000" />
+      <workItem from="1683882684349" duration="3118000" />
     </task>
     <servers />
   </component>
@@ -91,6 +115,11 @@
           <url>file://$PROJECT_DIR$/BST/BST.cpp</url>
           <line>32</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/loadfile.cpp</url>
+          <line>8</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
