@@ -13,7 +13,7 @@ struct Student {
     string name;
     float gpa{};
     string dep;
-    Student(string name, int id, float gpa, string dep){
+    Student(string name,float gpa, int id,  string dep){
         this->gpa = gpa;
         this->name = name;
         this->id = id;
@@ -24,27 +24,27 @@ struct Student {
 
     friend bool operator > (const Student& s1, const Student& s2)
     {
-        return s1.gpa > s2.gpa;
+        return s1.id > s2.id;
     }
 
     friend bool operator < (const Student& s1, const Student& s2)
     {
-        return s1.gpa < s2.gpa;
+        return s1.id < s2.id;
     }
 
     friend bool operator >= (const Student& s1, const Student& s2)
     {
-        return s1.gpa >= s2.gpa;
+        return s1.id >= s2.id;
     }
 
     friend bool operator <= (const Student& s1, const Student& s2)
     {
-        return s1.gpa > s2.gpa;
+        return s1.id <= s2.id;
     }
 
     friend bool operator == (const Student& s1, const Student& s2)
     {
-        return s1.gpa > s2.gpa;
+        return s1.id == s2.id;
     }
     friend ostream& operator<< (ostream& os, const Student& s){
         os << '[' << s.id << ',' << s.name << ',' << s.gpa << ',' << s.dep << ']' << '\n';
