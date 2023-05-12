@@ -1,7 +1,7 @@
-///// @author Nour El-din Ahmed 20210430
-///// @author Noor Eyad 20210499
-///// @authors Rana Essam 20210133
-///// date 5/2/2023..
+/// @author Nour El-din Ahmed 20210430
+/// @author Noor Eyad 20210499
+/// @authors Rana Essam 20210133
+/// date 5/2/2023..
 
 #include "AVL/AVL.cpp"
 #include "max_heap/max_heap.cpp"
