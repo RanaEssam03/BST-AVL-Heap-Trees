@@ -2,3 +2,5 @@
 .vscode/tasks.json
 BST/BST
 max_heap/max_heap
+main
+min_heap/min_heap

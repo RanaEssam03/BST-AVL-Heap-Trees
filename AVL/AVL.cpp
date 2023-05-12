@@ -7,7 +7,7 @@
 #include <utility>
 #include <vector>
 #include "Node.h"
-#include "..\loadfile.cpp"
+#include "../loadfile.cpp"
 
 
 int AVL::height(struct Node *N) {
@@ -218,6 +218,7 @@ void AVL::startAVL() {
                 float gpa;
 
                 cout << "id:"; cin >> id;
+                cin.ignore();
                 cout << "Name: "; getline(cin, name);
                 cout << "GPA: "; cin >> gpa;
                 cout << "Department: "; cin >> dep;

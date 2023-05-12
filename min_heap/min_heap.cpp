@@ -126,7 +126,7 @@ void min_heap<T>::print(int index){
 }
 
 
-int main(){
+int startMinHeap(){
     vector<Student> students = loadfile();
     min_heap<Student> heap(students);
     while (true)

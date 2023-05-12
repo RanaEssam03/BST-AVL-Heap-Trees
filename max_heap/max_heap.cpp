@@ -127,7 +127,7 @@ void max_heap<T>::print(int index){
 }
 
 
-int main(){
+int startMaxHeap(){
     vector<Student> students = loadfile();
     max_heap<Student> heap(students);
     while (true)

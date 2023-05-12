@@ -19,7 +19,8 @@ vector<Student> loadfile(){
         fs.ignore();
         getline(fs, name);
         fs >> gpa >> dep;
-        students.push_back(Student(name, id, gpa, dep));
+        Student std(name, gpa, id, dep);
+        students.push_back(std);
     }
     fs.close();
     return students;

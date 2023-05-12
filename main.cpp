@@ -4,7 +4,8 @@
 ///// date 5/2/2023..
 
 #include "AVL/AVL.cpp"
-
+#include "max_heap/max_heap.cpp"
+#include "min_heap/min_heap.cpp"
 
 int main(){
 
@@ -25,11 +26,11 @@ int main(){
                 break;
             }
             case 3:{
-                //TODO Min heap menu
+                startMinHeap();
                 break;
             }
             case 4:{
-                //TODO max heap menu
+                startMaxHeap();
                 break;
             }
             case 5:{
