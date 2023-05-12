@@ -46,9 +46,17 @@ struct Student {
     {
         return s1.id == s2.id;
     }
-
-
+    friend ostream& operator<< (ostream& os, const Student& s){
+        os << '[' << s.id << ',' << s.name << ',' << s.gpa << ',' << s.dep << ']' << '\n';
+        return os;
+    }
 };
+
+// ostream& operator<<(ostream& os, const Student& s)
+// {
+//     os << '[' << s.id << ',' << s.name << ',' << s.gpa << ',' << s.dep << ']';
+//     return os;
+// }
 
 
 #endif //BST_AVL_HEAP_TREES_STUDENT_H
