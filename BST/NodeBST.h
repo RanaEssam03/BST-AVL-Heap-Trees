@@ -2,10 +2,10 @@
 // Created on 5/3/2023.
 // ID: 20210499
 
-#include "../Student.h"
+#ifndef BST_AVL_HEAP_TREES_NODEBST_H
+#define BST_AVL_HEAP_TREES_NODEBST_H
 
-#ifndef BST_AVL_HEAP_TREES_NODE_H
-#define BST_AVL_HEAP_TREES_NODE_H
+#include "../Student.h"
 
 struct node{
     node* left;
@@ -15,6 +15,7 @@ struct node{
     node(){
         left = nullptr;
         right = nullptr;
+        parent = nullptr;
     }
     node(Student student){
         left = nullptr;
@@ -24,4 +25,5 @@ struct node{
     }
 };
 
-#endif //BST_AVL_HEAP_TREES_NODE_H
+
+#endif //BST_AVL_HEAP_TREES_NODEBST_H

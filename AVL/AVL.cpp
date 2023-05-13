@@ -1,6 +1,6 @@
-//
-// Created by Rana Essam on 5/2/2023.
-//
+/// @author: Rana Essam
+/// @created on  5/2/2023.
+/// ID: 20210133
 
 #include "AVL.h"
 
@@ -216,7 +216,6 @@ void AVL::startAVL() {
                 int id;
                 string dep;
                 float gpa;
-
                 cout << "id:"; cin >> id;
                 cin.ignore();
                 cout << "Name: "; getline(cin, name);

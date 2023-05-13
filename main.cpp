@@ -18,7 +18,7 @@ int main(){
        cin >> option;
         switch (option) {
             case 1:{
-                BST tree;
+                BST tree{};
                 tree.startBST();
                 break;
             }

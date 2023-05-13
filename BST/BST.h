@@ -2,7 +2,7 @@
 // Created on 5/3/2023.
 // ID: 20210499
 
-#include "node.h"
+#include "NodeBST.h"
 #include <vector>
 #include "../loadfile.cpp"
 
