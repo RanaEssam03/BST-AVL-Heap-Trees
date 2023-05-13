@@ -35,10 +35,10 @@ void min_heap<T>::min_heapify(int index)
     int l = 2*index;
     int r = 2*index + 1;
     int smallest = index;
-    if(l < arr.size() && arr[smallest] > arr[l])
+    if(l < arr.size() && arr[smallest].gpa > arr[l].gpa)
         smallest = l;
 
-    if(r < arr.size() && arr[smallest] > arr[r])
+    if(r < arr.size() && arr[smallest].gpa > arr[r].gpa)
         smallest = r;
     
     if(smallest != index){
@@ -60,7 +60,7 @@ void min_heap<T>::insert(T element)
 {
     int index = arr.size();
     arr.push_back(element);
-    while (index > 0 && arr[((index+1)/2)-1] > arr[index])
+    while (index > 0 && arr[((index+1)/2)-1].gpa > arr[index].gpa)
     {
         swap(arr[index], arr[((index+1)/2)-1]);
         index = ((index+1)/2)-1;
@@ -154,7 +154,7 @@ int startMinHeap(){
             cout << "Department: ";
             cin >> dep;
             cout << endl; 
-            heap.insert(Student(name, id, gpa, dep));
+            heap.insert(Student(name, gpa, id, dep));
             break;
         
         case 2:

@@ -35,10 +35,10 @@ void max_heap<T>::max_heapify(int index)
     int l = 2*index;
     int r = 2*index + 1;
     int largest = index;
-    if(l < arr.size() && arr[largest] < arr[l])
+    if(l < arr.size() && arr[largest].gpa < arr[l].gpa)
         largest = l;
 
-    if(r < arr.size() && arr[largest] < arr[r])
+    if(r < arr.size() && arr[largest].gpa < arr[r].gpa)
         largest = r;
     
     if(largest != index){
@@ -60,7 +60,7 @@ void max_heap<T>::insert(T element)
 {
     int index = arr.size();
     arr.push_back(element);
-    while (index > 0 && arr[((index+1)/2)-1] < arr[index])
+    while (index > 0 && arr[((index+1)/2)-1].gpa < arr[index].gpa)
     {
         swap(arr[index], arr[((index+1)/2)-1]);
         index = ((index+1)/2)-1;
@@ -102,7 +102,6 @@ vector<T> max_heap<T>::heapSort(){
         T max = this->extract_max();
         sorted.push_back(max);
     }
-    reverse(sorted.begin(), sorted.end());
     arr = tmp;
     return sorted;
 }
@@ -155,7 +154,7 @@ int startMaxHeap(){
             cout << "Department: ";
             cin >> dep;
             cout << endl; 
-            heap.insert(Student(name, id, gpa, dep));
+            heap.insert(Student(name, gpa, id, dep));
             break;
         
         case 2:

@@ -91,6 +91,7 @@ node* BST::search(int ID, node* pointer) {
     if (ID == pointer->info.id){
         return pointer;
     }
+    return nullptr;
 }
 node* BST::getRoot(){
     return root;
