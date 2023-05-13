@@ -4,6 +4,7 @@
 /// date 5/2/2023..
 
 #include "AVL/AVL.cpp"
+#include "BST/BST.cpp"
 #include "max_heap/max_heap.cpp"
 #include "min_heap/min_heap.cpp"
 
@@ -11,13 +12,14 @@ int main(){
 
     while (true){
        cout << " Choose Data Structure:\n";
-       cout <<    "1. BST \n2. AVL  \n3. Min Heap\n4. Max Heap\n5. Exit Program\n";
+       cout << "1. BST \n2. AVL  \n3. Min Heap\n4. Max Heap\n5. Exit Program\n";
        cout << "Please pick one option->";
        int option;
        cin >> option;
         switch (option) {
             case 1:{
-                //TODO BST menu
+                BST tree;
+                tree.startBST();
                 break;
             }
             case 2:{

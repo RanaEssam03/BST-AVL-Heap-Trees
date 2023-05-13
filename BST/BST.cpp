@@ -4,7 +4,7 @@
 
 #include "BST.h"
 
-void BST::addStudent(Student& student) {
+void BST::addStudent(Student student) {
     node* newNode = new node(student);
     if (root == nullptr){
         root = newNode;
@@ -108,53 +108,57 @@ void BST::print(node* node) {
     print(node->right);
 }
 
-int main(){
-    Student s1("noor", 1, 3.2, "CS");
-    Student s2("noor", 2, 3.2, "CS");
-    Student s3("noor", 3, 3.2, "CS");
-    Student s4("noor", 4, 3.2, "CS");
-    Student s5("noor", 5, 3.2, "CS");
-    Student s6("noor", 6, 3.2, "CS");
-    Student s7("noor", 7, 3.2, "CS");
-    BST v{};
-    v.addStudent(s1);
-    v.addStudent(s2);
-    v.addStudent(s3);
-    v.addStudent(s4);
-    v.addStudent(s5);
-    v.addStudent(s6);
-    v.addStudent(s7);
-    v.print(v.getRoot());
-    node* n = v.search(3, v.getRoot());
-    if (n!= nullptr){
-        cout << "Student Found.\n";
-        cout << n->info;
-    }else{
-        cout << "Student not found.\n";
+void BST::startBST(){
+    vector<Student>students = loadfile();
+    for(auto std: students){
+        addStudent(std);
     }
-    node* nn = v.removeStudent(2, v.getRoot());
-    if (nn == nullptr){
-        cout << "Student not found.\n";
+    while (true)
+    {
+        cout << "\nChoose one of the following options:\n";
+        cout << "1. Add student \n";
+        cout << "2. Remove student\n";
+        cout << "3. Search student\n";
+        cout << "4. Print All (sorted by id)\n";
+        cout << "5. Return to main menu\n->";
+        int option;
+        cin >> option;
+        switch (option) {
+            case 1: {
+                string name;
+                int id;
+                string dep;
+                float gpa;
+
+                cout << "id:"; cin >> id;
+                cin.ignore();
+                cout << "Name: "; getline(cin, name);
+                cout << "GPA: "; cin >> gpa;
+                cout << "Department: "; cin >> dep;
+                addStudent(Student(name, gpa, id, dep));
+                cout << "The student is added\n";
+                break;
+            }
+            case 2: {
+                int id;
+                cout << "ID: "; cin>> id;
+                removeStudent(id, getRoot());
+                break;
+            }
+            case 3:{
+                int id ;
+                cout << "ID: "; cin >>id;
+                search(id, getRoot());
+                break;
+            }
+            case 4: {
+                print(getRoot());
+                break;
+            }
+            default:{
+                return;
+            }
+        }
     }
-    v.print(v.getRoot());
-    cout << endl;
-    Student s8("noor", 8, 3.2, "CS");
-    v.addStudent(s8);
-    v.print(v.getRoot());
-    v.removeStudent(3, v.getRoot());
-    v.print(v.getRoot());
-    cout << endl;
-    v.removeStudent(2, v.getRoot());
-    v.removeStudent(1, v.getRoot());
-    v.print(v.getRoot());
-    cout << endl;
-    Student s9("noor", 2, 3.2, "CS");
-    v.addStudent(s9);
-    v.print(v.getRoot());
-    cout << endl;
-    Student s10("noor", 1, 3.2, "CS");
-    v.addStudent(s10);
-    v.print(v.getRoot());
-    cout << endl;
 }
 

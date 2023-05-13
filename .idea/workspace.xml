@@ -3,9 +3,9 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
-  <component name="CMakePresetLoader"><![CDATA[{
-  "useNewFormat": true
-}]]></component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
   <component name="CMakeRunConfigurationManager">
     <generated />
   </component>
@@ -16,14 +16,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5962005f-303e-4681-88b8-45a28670857e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/BST-AVL-Heap-Trees.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BST-AVL-Heap-Trees.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AVL/AVL.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/AVL/AVL.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AVL/AVL.h" beforeDir="false" afterPath="$PROJECT_DIR$/AVL/AVL.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AVL/Node.h" beforeDir="false" afterPath="$PROJECT_DIR$/AVL/Node.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loadfile.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/loadfile.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BST/BST.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/BST/BST.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BST/BST.h" beforeDir="false" afterPath="$PROJECT_DIR$/BST/BST.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.exe" beforeDir="false" afterPath="$PROJECT_DIR$/main.exe" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +28,6 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -60,7 +54,7 @@
     "WebServerToolWindowFactoryState": "false",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "BST",
     "last_opened_file_path": "C:/Users/Admin/Documents/GitHub/BST-AVL-Heap-Trees/BST/BST.cpp",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
