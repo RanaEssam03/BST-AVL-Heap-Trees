@@ -181,18 +181,24 @@ void AVL::searchById(int id) {    // interface function
     if (ans != nullptr) {
         cout << "student is found\n";
         cout << ans->info ;
+        freqMp[ans->info.dep]--;
     } else {
         cout << "student is not found\n";
     }
 }
 
-void AVL::insertByInfo(Student info) {    // interface function
+void AVL::insertByInfo(Student info) {
+    freqMp[info.dep]++;// interface function
     root = insert(root, std::move(info));
 }
 
 
 void AVL::printStudents() {   // interface function
     print(root);
+   string deps[]= {"CS", "IT" , "DS" , "IS"};
+   for(auto dep : deps){
+       cout << dep <<" "<<freqMp[dep] << " Students\n";
+   }
 }
 
 void AVL::startAVL() {
@@ -221,6 +227,7 @@ void AVL::startAVL() {
                 cout << "Name: "; getline(cin, name);
                 cout << "GPA: "; cin >> gpa;
                 cout << "Department: "; cin >> dep;
+                transform(dep.begin(), dep.end(), dep.begin(),::toupper);
                 insertByInfo(Student(name, gpa, id, dep));
                 cout << "The student is added\n";
                 break;

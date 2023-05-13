@@ -7,6 +7,7 @@
 
 
 #include "Node.h"
+#include <map>
 
 class AVL {
 private:
@@ -29,6 +30,8 @@ private:
     Node *insert(Node *node, Student info);
 
     Node *remove(int id, Node *root);
+
+    map<string, int>freqMp;
 public:
     AVL(){
         root = nullptr;
