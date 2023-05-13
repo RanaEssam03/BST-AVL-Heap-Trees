@@ -12,15 +12,16 @@
 class BST{
 private:
     node* root;
+    map<string, int> studentsPerDepartment;
 public:
     void addStudent(Student student);
-    node* removeStudent(int ID, node* pointer);
+    node* removeStudent(int ID, node* pointer, bool f);
     node* search(int ID, node* pointer);
     void print(node* node);
     node* getRoot();
     node* minValueNode(node* pointer);
-
     void startBST();
+    void printStudentsPerDepartment();
 };
 
 

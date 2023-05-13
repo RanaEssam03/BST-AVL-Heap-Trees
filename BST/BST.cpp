@@ -8,6 +8,7 @@ void BST::addStudent(Student student) {
     node* newNode = new node(student);
     if (root == nullptr){
         root = newNode;
+        studentsPerDepartment[newNode->info.dep]++;
         return;
     }
     node* current = root;
@@ -24,10 +25,12 @@ void BST::addStudent(Student student) {
     if (newNode->info.id < pointer->info.id){
         pointer->left = newNode;
         newNode->parent = pointer;
+        studentsPerDepartment[newNode->info.dep]++;
     }
     else{
         pointer->right = newNode;
         newNode->parent = pointer;
+        studentsPerDepartment[newNode->info.dep]++;
     }
 }
 node* BST::minValueNode(node* pointer){
@@ -37,23 +40,32 @@ node* BST::minValueNode(node* pointer){
     }
     return current;
 }
-node* BST::removeStudent(int ID, node* pointer) {
+node* BST::removeStudent(int ID, node* pointer, bool f) {
     if (search(ID, getRoot()) == nullptr){
+        cout << "Student not found.\n";
         return nullptr;
+    }
+    else{
+        if (!f){
+            cout << "Student found.\n";
+            f = true;
+        }
     }
     if (pointer == nullptr){
         return pointer;
     }
     if (ID < pointer->info.id){
-        pointer->left = removeStudent(ID, pointer->left);
+        pointer->left = removeStudent(ID, pointer->left, f);
     }
     else if (ID > pointer->info.id){
-        pointer->right = removeStudent(ID, pointer->right);
+        pointer->right = removeStudent(ID, pointer->right, f);
     }
     else{
         if (pointer->left == nullptr && pointer->right == nullptr){
             node* temp = pointer->right;
             if(root == pointer) root = nullptr;
+            cout << pointer->info;
+            studentsPerDepartment[pointer->info.dep]--;
             free(pointer);
             cout << "Student removed\n";
             return temp;
@@ -61,6 +73,8 @@ node* BST::removeStudent(int ID, node* pointer) {
         else if (pointer->left == nullptr){
             node* temp = pointer->right;
             if(root == pointer) root = temp;
+            cout << pointer->info;
+            studentsPerDepartment[pointer->info.dep]--;
             free(pointer);
             cout << "Student removed\n";
             return temp;
@@ -68,13 +82,15 @@ node* BST::removeStudent(int ID, node* pointer) {
         else if (pointer->right == nullptr){
             node* temp = pointer->left;
             if(root == pointer) root = temp;
+            cout << pointer->info;
+            studentsPerDepartment[pointer->info.dep]--;
             free(pointer);
             cout << "Student removed\n";
             return temp;
         }
         node* temp = minValueNode(pointer->right);
         pointer->info = temp->info;
-        pointer->right = removeStudent(temp->info.id, pointer->right);  
+        pointer->right = removeStudent(temp->info.id, pointer->right, f);
     }
     return pointer;
 }
@@ -108,14 +124,18 @@ void BST::print(node* node) {
     cout << node->info;
     print(node->right);
 }
-
+void BST::printStudentsPerDepartment(){
+    cout << "\nStudents per Departments:\n";
+    for (const auto& item : studentsPerDepartment){
+        cout << item.first << " " << item.second << " Students\n";
+    }
+}
 void BST::startBST(){
     vector<Student>students = loadfile();
-    for(auto std: students){
+    for(const auto& std: students){
         addStudent(std);
     }
-    while (true)
-    {
+    while (true){
         cout << "\nChoose one of the following options:\n";
         cout << "1. Add student \n";
         cout << "2. Remove student\n";
@@ -130,7 +150,6 @@ void BST::startBST(){
                 int id;
                 string dep;
                 float gpa;
-
                 cout << "id:"; cin >> id;
                 cin.ignore();
                 cout << "Name: "; getline(cin, name);
@@ -142,8 +161,9 @@ void BST::startBST(){
             }
             case 2: {
                 int id;
+                bool f = false;
                 cout << "ID: "; cin>> id;
-                removeStudent(id, getRoot());
+                removeStudent(id, getRoot(), f);
                 break;
             }
             case 3:{
@@ -154,6 +174,7 @@ void BST::startBST(){
             }
             case 4: {
                 print(getRoot());
+                printStudentsPerDepartment();
                 break;
             }
             default:{
